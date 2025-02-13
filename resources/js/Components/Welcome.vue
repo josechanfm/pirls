@@ -8,14 +8,11 @@ import ApplicationLogo from '@/Components/ApplicationLogo.vue';
             <ApplicationLogo class="block h-12 w-auto" />
 
             <h1 class="mt-8 text-2xl font-medium text-gray-900">
-                Welcome to your Jetstream application!
+                Welcome to your PIRLS mock test system!
             </h1>
 
             <p class="mt-6 text-gray-500 leading-relaxed">
-                Laravel Jetstream provides a beautiful, robust starting point for your next Laravel application. Laravel is designed
-                to help you build your application using a development environment that is simple, powerful, and enjoyable. We believe
-                you should love expressing your creativity through programming, so we have spent time carefully crafting the Laravel
-                ecosystem to be a breath of fresh air. We hope you love it.
+                The Progress in International Reading Literacy Study (PIRLS) is a large-scale study which aims to monitor and compare the reading comprehension achievement of Grade 4 students across participating countries/regions. It provides information to track how different aspects of reading performance have changed over time. Additionally, PIRLS collects background information which allows the participating countries/regions to examine how students’ learning gains are associated with home, school, and classroom contexts. The ETARC of the Faculty of Education (FED) has been designated as the implementing body for Macao by DSEDJ. ETARC will collaborate with schools to oversee the administration, processing, and scoring of the PIRLS 2026 assessment. Additionally, ETARC will be accountable for reporting and disseminating the findings of PIRLS 2026 in Macao, following the guidelines and supervision of DSEDJ.
             </p>
         </div>
 
@@ -26,7 +23,7 @@ import ApplicationLogo from '@/Components/ApplicationLogo.vue';
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
                     </svg>
                     <h2 class="ms-3 text-xl font-semibold text-gray-900">
-                        <a href="https://laravel.com/docs">Documentation</a>
+                        <a href="https://laravel.com/docs">User Guide</a>
                     </h2>
                 </div>
 
@@ -51,7 +48,7 @@ import ApplicationLogo from '@/Components/ApplicationLogo.vue';
                         <path stroke-linecap="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" />
                     </svg>
                     <h2 class="ms-3 text-xl font-semibold text-gray-900">
-                        <a href="https://laracasts.com">Laracasts</a>
+                        <a href="https://laracasts.com">Tutorial</a>
                     </h2>
                 </div>
 

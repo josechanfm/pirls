@@ -46,5 +46,7 @@ Route::group([
 ], function () {
     Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class,'index'])->name('admin.dashboard');
     Route::resource('configs', App\Http\Controllers\Admin\ConfigController::class)->names('admin.configs');
-
 });
+
+Route::get('mock', [App\Http\Controllers\MockController::class,'index'])->name('mock.index');
+
