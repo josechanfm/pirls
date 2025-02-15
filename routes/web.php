@@ -50,3 +50,4 @@ Route::group([
 
 Route::get('mock', [App\Http\Controllers\MockController::class,'index'])->name('mock.index');
 
+Route::get('mock/pirls', [App\Http\Controllers\Mock\PirlsController::class,'index'])->name('pirls.index');
