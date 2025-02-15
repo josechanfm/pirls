@@ -10,7 +10,8 @@
         </div>
         <div class="p-5 h-full">
             <div class="h-full bg-white">
-              Your task is here...
+              <div>Your task is here...</div>
+              <div>{{ question.question}}</div>
             </div>
           </div>
 

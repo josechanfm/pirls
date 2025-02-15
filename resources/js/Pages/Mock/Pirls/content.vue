@@ -10,7 +10,12 @@
             <a-tab-pane key="1" tab="數位閱讀學習平台">
               <Question :question="question"/>
             </a-tab-pane>
-            <a-tab-pane key="3" tab="題庫">題庫</a-tab-pane>
+            <a-tab-pane key="3" tab="題庫">
+              <div class="relative">
+                <div class="absolute left-[-10px] w-full h-[1000px]" style="z-index:100"></div>
+                  <embed type="text/html" src="https://www.wh.mo/cn/site/detail/2" class="h-[1000px] w-full">
+              </div>
+            </a-tab-pane>
           </a-tabs>
         </div>
       </div>
