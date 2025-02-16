@@ -7,8 +7,8 @@
         </div>
     </div>
     <div class="text-center">
-        <div v-for="(question, i) in questions">
-            <a-button>{{ i+1 }}</a-button>
+        <div v-for="i in topic.question_count">
+            <a-button class="w-12">{{ i }}</a-button>
         </div>
     </div>
 
@@ -17,7 +17,7 @@
   <script>
 
   export default {
-    props:['questions'],
+    props:['topic'],
     data() {
       return {
         time: 0,

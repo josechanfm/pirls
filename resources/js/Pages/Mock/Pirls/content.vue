@@ -1,21 +1,29 @@
 <!-- src/components/Timer.vue -->
 <template>
-    <div class="text-center px-5 h-full bg-orange-400">
-      <div class="h-16 bg-orange-200 flex items-center justify-center">
+    <div class="px-5 h-full bg-orange-400">
+      <div class="h-16 text-center bg-orange-200">
         ePirls中文樣題 - 台灣原住民文化
       </div>
       <div class="mt-5 bg-white">
         <div class="p-5">
-          <a-tabs v-model:activeKey="activeKey">
-            <a-tab-pane key="1" tab="數位閱讀學習平台">
-              <Question :question="question"/>
-            </a-tab-pane>
-            <a-tab-pane key="3" tab="題庫">
-              <div class="relative">
-                <div class="absolute left-[-10px] w-full h-[1000px]" style="z-index:100"></div>
-                  <embed type="text/html" src="https://www.wh.mo/cn/site/detail/2" class="h-[1000px] w-full">
+          <a-tabs v-model:activeKey="activeKey" type="card">
+            <a-tab-pane key="0" tab="數位閱讀學習平台">
+              <div v-for="topic in domain.topics">
+                <p>
+                  <a @click="selectTopic(topic)">{{ topic.url }}</a><br/>
+                  {{ topic.name }}<br/>
+                  {{ topic.content }}
+                </p>
               </div>
             </a-tab-pane>
+              <a-tab-pane v-for="(tabPage, tpId) in tabPages":key="tpId" :tab="tabPage.title">
+                <div class="relative">
+                  <div class="absolute left-[-10px] w-full h-[1000px]" style="z-index:100"></div>
+                    <embed type="text/html" :src="tabPage.url" class="h-[1000px] w-full">
+                </div>
+              </a-tab-pane>
+
+
           </a-tabs>
         </div>
       </div>
@@ -30,17 +38,34 @@ import Question from './question.vue'; // Adjust the path to the current directo
     components: {
       Question
     },
-    props:['question'],
+    props:['domain','tabPages'],
     data() {
       return {
-        activeKey:"1"
+        activeKey:"0",
       };
     },
     computed: {
     },
+
     mounted() {
     },
+    watch: {
+      tabPages: {
+            immediate: true, // Ensure it runs on initial render
+            handler(newTabPages) {
+                // Set activeKey to the last tab if there are tabPages
+                if (newTabPages && newTabPages.length > 0) {
+                    this.activeKey = String(newTabPages.length - 1); // Set to the last tab index
+                }
+            },
+        },
+    },
     methods: {
+      selectTopic(topic){
+        this.$emit('currentTopic', topic); // Emit the value to the parent
+
+      },
+      
     },
   };
   </script>

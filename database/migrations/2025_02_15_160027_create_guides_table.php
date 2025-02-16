@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('degrees', function (Blueprint $table) {
+        Schema::create('guides', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('faculty_id');
-            $table->string('code');
-            $table->string('name_zh');
-            $table->string('name_en')->nullable();
-            $table->string('name_pt')->nullable();
-            $table->text('description')->nullable();
+            $table->string('url')->nullable();
+            $table->text('content')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('degrees');
+        Schema::dropIfExists('guides');
     }
 };

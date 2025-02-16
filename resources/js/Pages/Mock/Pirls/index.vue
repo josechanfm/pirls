@@ -2,15 +2,15 @@
   <div class="container">
     <div class="flex">
       <div class="flex-none w-[100px] bg-orange-200">
-        <Timer :questions="questions" />
+        <Timer :topic="topic" />
       </div>
       <div class="flex-grow">
-        <Content :question="questions[0]"/>
+        <Content :domain="domain" :tabPages="tabPages" @currentTopic="setCurrentTopic"/>
       </div>
-    <div class="flex-none w-[300px]">
-      <Task :question="questions[0]"/>
+      <div class="flex-none w-[300px]">
+        <Task :leads="taskLeads" @leadTo="changeLeadTo"/>
+      </div>
     </div>
-  </div>
   </div>
 </template>
 
@@ -20,17 +20,40 @@ import Content from './content.vue'; // Adjust the path to the current directory
 import Task from './task.vue'; // Adjust the path to the current directory
 
 export default {
+  props: ['domain'],
   components: {
     Timer, Content, Task
   },
   data() {
     return {
-      questions:[
-        {id:1, question: 'Question 1', answers:['ans 1','ans 2']}
+      tabPages:[
+        // {title:'歷史文化',url:'http://icm.org.mo'}
+      ],
+      taskLeads:[{
+          type:'GUIDE',
+          leadable: {
+            content:'asdfasdfasdf',
+            url:null
+          }
+      }],
+      question:null,
+      topic:{
+        question_count:10,
+        leads:[]
+      },
+      questions: [
+        { id: 1, question: 'Question 1', answers: ['ans 1', 'ans 2'] }
       ]
     };
   },
-  mounted(){
+  mounted() {
+    this.taskLeads=[{
+      type:'GUIDE',
+      leadable: {
+        content:this.domain.content,
+        url:null
+      }
+    }];
     this.generateQuestions()
   },
   methods: {
@@ -42,13 +65,29 @@ export default {
           answers: [`ans ${i}-1`, `ans ${i}-2`],
         });
       }
+    },
+    setCurrentTopic(topic){      
+      this.topic=topic
+      this.tabPages=[{title:topic.name, url:topic.url}]
+      this.taskLeads[1]=topic.leads[0]
+    },
+    changeLeadTo(lead){
+      if(lead && lead.type=="GUIDE" && lead.leadable.url){
+        this.tabPages.push({title:lead.leadable.title, url:lead.leadable.url});
+        const leadIndex = this.topic.leads.findIndex(l => l.id==lead.id)
+        this.taskLeads.push(this.topic.leads[leadIndex+1])
+      }
+      if(lead && lead.type=="QUESTION"){
+        const leadIndex = this.topic.leads.findIndex(l => l.id==lead.id)
+        this.taskLeads.push(this.topic.leads[leadIndex+1])
+      }
     }
   },
 };
 </script>
 
 <style>
-body{
-  margin: 0px!important;
+body {
+  margin: 0px !important;
 }
 </style>

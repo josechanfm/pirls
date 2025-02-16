@@ -10,20 +10,43 @@
         </div>
         <div class="p-5 h-full">
             <div class="h-full bg-white">
-              <div>Your task is here...</div>
-              <div>{{ question.question}}</div>
+              <template v-for="(lead, i) in leads">
+                <div :class="((leads.length - 1) === i) ? '' : 'disabled'" class="flex items-start p-4 border-b">
+                  <!-- Avatar Image -->
+                  <div class="flex-shrink-0 mr-4">
+                    <img v-if="lead.type=='GUIDE'" src="/images/avatar_teacher.png" alt="Avatar" class="w-12 h-12 rounded-full" />
+                    <img v-else src="/images/avatar_student.png" alt="Avatar" class="w-12 h-12 rounded-full" />
+                  </div>
+                  <!-- Content -->
+                  <div class="flex-grow">
+                    <div class="">
+                      {{ lead.leadable.content }}
+                      <template v-if="lead.leadable.url">
+                        <a @click="leadTo(lead)" class="text-blue-500 hover:underline">Let's go</a>
+                      </template>
+                      <div v-if="lead.leadable.type=='TEXTAREA'">
+                          <a-textarea lead.leadable.answer_a/>
+                          <a-button @click="studentResponse(lead)">遞交</a-button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </template>
             </div>
-          </div>
-
+          </div> 
       </div>
     </div>
-
 </template>
 
   <script>
+import { countdownProps } from 'ant-design-vue/es/statistic/Countdown';
+import { UserOutlined } from '@ant-design/icons-vue';
 
   export default {
-    props:['question'],
+    components:{
+      UserOutlined
+    },
+    props:['leads'],
     data() {
       return {
       };
@@ -33,10 +56,22 @@
     mounted() {
     },
     methods: {
+      leadTo(lead){
+        this.$emit('leadTo',lead);
+      },
+      studentResponse(lead){
+        this.leadTo(lead)
+      }
+
     },
   };
   </script>
   
   <style scoped>
   /* Add any additional styles here */
+  .disabled{
+    pointer-events: none; /* Prevent any interactions */
+    color: gray; /* Change text color to gray */
+    opacity: 0.5; /* Make text appear lighter */
+  }
   </style>
