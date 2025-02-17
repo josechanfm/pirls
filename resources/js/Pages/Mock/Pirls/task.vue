@@ -1,6 +1,6 @@
 <!-- src/components/Timer.vue -->
 <template>
-    <div class="text-center pl-5 h-full">
+    <div class="text-center h-full w-full">
       <div class="bg-orange-400 h-full">
         <div class="text-lg h-16 p-5">
           <div class=" bg-yellow-200">

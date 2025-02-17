@@ -20,8 +20,9 @@ class LeadSeeder extends Seeder
 
         $topic=Topic::where('name','澳門文化遺產')->first();
         $guide=Guide::create([
+            'title'=>'文物點',
             'url'=>'https://www.wh.mo/cn/site/detail/1',
-            'content'=>'歡迎你加入我們一起學習,你選擇了澳門文化遺產。',
+            'content'=>'你選擇了澳門文化遺產。',
         ]);
         $topic->leads()->create([
             'sequence'=>'1',
@@ -31,6 +32,7 @@ class LeadSeeder extends Seeder
         ]);
         $question=Question::create([
             'type'=>'TEXTAREA',
+            'title'=>'題目',
             'content'=>'請寫出三個文物點。',
             'answer_a'=>'Answer a'
         ]);
@@ -42,6 +44,7 @@ class LeadSeeder extends Seeder
         ]);
         $question=Question::create([
             'type'=>'SINGLE',
+            'title'=>'題目',
             'content'=>'Question 2',
             'answer_a'=>'Answer b'
         ]);

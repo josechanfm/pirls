@@ -1,13 +1,13 @@
 <template>
-  <div class="container">
-    <div class="flex">
-      <div class="flex-none w-[100px] bg-orange-200">
+  <div class="w-full h-[100vh]" >
+    <div class="flex h-full">
+      <div class="w-[100px] bg-orange-200">
         <Timer :topic="topic" />
       </div>
-      <div class="flex-grow">
+      <div class="flex-1 h-full">
         <Content :domain="domain" :tabPages="tabPages" @currentTopic="setCurrentTopic"/>
       </div>
-      <div class="flex-none w-[300px]">
+      <div class="w-[300px] pl-5">
         <Task :leads="taskLeads" @leadTo="changeLeadTo"/>
       </div>
     </div>

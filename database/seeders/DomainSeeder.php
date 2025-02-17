@@ -15,7 +15,8 @@ class DomainSeeder extends Seeder
     {
         Domain::create([
             "area"=>"LOCAL_CULTURE",
-            "name"=>"澳門本土文化"
+            "name"=>"澳門本土文化",
+            "content"=>"歡迎你加入我們一起學習,讓我們一起學習澳門文化遺產。"
         ]);
     }
 }

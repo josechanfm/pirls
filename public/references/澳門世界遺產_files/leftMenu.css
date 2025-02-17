@@ -1,0 +1,21 @@
+﻿#leftMenu
+{
+    z-index: 10;
+    }
+
+
+#leftMenu a
+{
+    font-size: x-large;
+    display:block;
+    color: #666666;
+    padding-bottom: 15px;
+    }
+
+#leftMenu a:link, #leftMenu a:visited, #leftMenu a:hover, #leftMenu a:active 
+{
+    cursor: pointer;
+    text-decoration: none;
+    color: #666666;
+    font-weight: 600;
+}

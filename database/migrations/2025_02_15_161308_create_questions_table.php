@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
             $table->string('type'); //GUIDE, SINGLE, MULTI, INPUT
+            $table->string('title');
             $table->text('content');
             $table->text('answer_a')->nullable();
             $table->text('answer_b')->nullable();

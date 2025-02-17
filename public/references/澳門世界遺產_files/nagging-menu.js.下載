@@ -1,0 +1,57 @@
+function isMainPage() {
+    var url = $(location).attr('href').toLowerCase().replace("http://", ""); ;
+    url = url.split("/");
+    //alert(url.length);
+    if (url.length > 3) {
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+
+var isMain = isMainPage();
+
+function logoStateChange(hidden) {
+    //alert(isMain);
+    if (isMain == true) {
+        if (hidden == true) {
+            $("#menuLogo").hide();
+            $("#menuUL").removeClass("col-md-8");
+            $("#menuUL").addClass("col-md-12");
+        } else {
+            $("#menuLogo").show();
+            $("#menuUL").removeClass("col-md-12");
+            $("#menuUL").addClass("col-md-8");
+        }    
+    } 
+}
+
+
+$(function () {
+
+    var menu = $('#menu'),
+		pos = menu.offset();
+
+    
+
+    //alert(isMain);
+    logoStateChange(true);
+
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > pos.top + menu.height() && menu.hasClass('default')) {
+            logoStateChange(false);
+
+            menu.fadeOut('fast', function () {
+                $(this).removeClass('default').addClass('fixed').fadeIn('fast');
+            });
+        } else if ($(this).scrollTop() <= pos.top && menu.hasClass('fixed')) {
+            logoStateChange(true);
+
+            menu.fadeOut('fast', function () {
+                $(this).removeClass('fixed').addClass('default').fadeIn('fast');
+            });
+        }
+    });
+
+});

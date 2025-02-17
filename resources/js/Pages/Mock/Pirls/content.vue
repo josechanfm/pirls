@@ -7,7 +7,7 @@
       <div class="mt-5 bg-white">
         <div class="p-5">
           <a-tabs v-model:activeKey="activeKey" type="card">
-            <a-tab-pane key="0" tab="數位閱讀學習平台">
+            <a-tab-pane key="default" tab="數位閱讀學習平台">
               <div v-for="topic in domain.topics">
                 <p>
                   <a @click="selectTopic(topic)">{{ topic.url }}</a><br/>
@@ -16,7 +16,7 @@
                 </p>
               </div>
             </a-tab-pane>
-              <a-tab-pane v-for="(tabPage, tpId) in tabPages":key="tpId" :tab="tabPage.title">
+              <a-tab-pane v-for="(tabPage, tpId) in tabPages" :key="tpId" :tab="tabPage.title">
                 <div class="relative">
                   <div class="absolute left-[-10px] w-full h-[1000px]" style="z-index:100"></div>
                     <embed type="text/html" :src="tabPage.url" class="h-[1000px] w-full">
@@ -33,7 +33,6 @@
 
 <script>
 import Question from './question.vue'; // Adjust the path to the current directory
-
   export default {
     components: {
       Question
@@ -41,12 +40,11 @@ import Question from './question.vue'; // Adjust the path to the current directo
     props:['domain','tabPages'],
     data() {
       return {
-        activeKey:"0",
+        activeKey:'default',
       };
     },
     computed: {
     },
-
     mounted() {
     },
     watch: {
@@ -55,9 +53,11 @@ import Question from './question.vue'; // Adjust the path to the current directo
             handler(newTabPages) {
                 // Set activeKey to the last tab if there are tabPages
                 if (newTabPages && newTabPages.length > 0) {
-                    this.activeKey = String(newTabPages.length - 1); // Set to the last tab index
+                    this.activeKey = newTabPages.length-1; // Set to the last tab index
                 }
+              console.log(newTabPages, this.activeKey)
             },
+            deep:true
         },
     },
     methods: {

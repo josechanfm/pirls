@@ -1,0 +1,66 @@
+﻿.langMenu 
+{
+    background-color:transparent; 
+    position:absolute;
+    display: block; 
+    width: 350px; 
+    height: 30px;
+    text-align:center;
+    border: 0px solid red;
+    top: 40px;
+    z-index: 1000;
+    left: 50%;
+    margin-left: -175px;
+    color:White;
+}
+
+.langMenu a:link {
+	color: #ffffff;
+	text-decoration: none;
+	font-weight: normal;
+}
+.langMenu a:visited {
+	text-decoration: none;
+	color: #ffffff;
+}
+.langMenu a:hover {
+	text-decoration: none;
+	color: #ffffff;
+}
+.langMenu a:active {
+	text-decoration:none;
+	color: #ffffff;
+}
+
+.langMenu div
+{
+    display: inline-block;
+    text-align:center;
+    }
+    
+div.btn
+{
+    width: 50px;
+    }
+    
+div.dot
+{
+    width: 40px;
+    }
+
+@media (max-width: 767px) 
+{
+   .langMenu 
+    {
+        width: 250px; 
+        margin-left: -125px;
+    }
+    div.btn
+    {
+    width: 50px;
+    }
+    div.dot
+    {
+    width: 5px;
+    }
+}

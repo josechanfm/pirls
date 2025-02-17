@@ -1,0 +1,46 @@
+﻿body 
+{
+    background-color: #f2f2f2;
+    }
+
+a:link {
+	text-decoration: none;
+	color: #008874;
+}
+a:visited {
+	color: #008874;
+}
+a:hover 
+{
+    cursor:pointer;
+	color: #008874;
+}
+a:active {
+	color: #008874;
+}
+
+
+.naviContainer
+{
+	height: 100px;
+    }
+    
+#menu {
+	line-height: 100px;
+}
+
+.default {
+    height: 100px;
+}
+
+#navi {
+    height: 100px;
+}
+
+.mainContent{
+    display:none;
+}
+
+.mainContent show{
+    display:block!important;
+}
