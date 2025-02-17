@@ -2,7 +2,7 @@
 <template>
     <div class="px-5 h-full bg-orange-400">
       <div class="h-16 text-center bg-orange-200">
-        ePirls中文樣題 - 台灣原住民文化
+        ePirls中文樣題 - 澳門文化專題
       </div>
       <div class="mt-5 bg-white">
         <div class="p-5">
