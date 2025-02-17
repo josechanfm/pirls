@@ -45,8 +45,13 @@ class LeadSeeder extends Seeder
         $question=Question::create([
             'type'=>'SINGLE',
             'title'=>'題目',
-            'content'=>'Question 2',
-            'answer_a'=>'Answer b'
+            'content'=>'媽閣廟最後一次重修擴建後，奠定今天的模樣。是在那一年?',
+            'options' => [
+                ["value" => "a", "label" => "1851年"],
+                ["value" => "b", "label" => "1875年"],
+                ["value" => "c", "label" => "1828年"],
+                ["value" => "d", "label" => "1888年"]
+            ],
         ]);
         $topic->leads()->create([
             'sequence'=>'3',

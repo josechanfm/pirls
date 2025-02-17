@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('type'); //GUIDE, SINGLE, MULTI, INPUT
             $table->string('title');
             $table->text('content');
+            $table->text('options')->nullable();
             $table->text('answer_a')->nullable();
             $table->text('answer_b')->nullable();
             $table->text('answer_c')->nullable();

@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 class Question extends Model
 {
     use HasFactory;
+    protected $casts=['options'=>'json'];
 
     public function leads():MorphMany{
         return $this->morphMany(Lead::class,'leadable');

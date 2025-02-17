@@ -28,6 +28,10 @@
                           <a-textarea lead.leadable.answer_a/>
                           <a-button @click="studentResponse(lead)">遞交</a-button>
                       </div>
+                      <div v-else-if="lead.leadable.type=='SINGLE'">
+                        <a-radio-group v-model:value="lead.leadable.answer_a" :options="lead.leadable.options"/>
+                          <a-button @click="studentResponse(lead)">遞交</a-button>
+                      </div>
                     </div>
                   </div>
                 </div>
