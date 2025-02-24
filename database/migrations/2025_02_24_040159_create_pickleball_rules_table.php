@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('minor');
             $table->text('question');
             $table->text('options');
-            $table->string('currect');
+            $table->string('correct');
             $table->timestamps();
         });
     }

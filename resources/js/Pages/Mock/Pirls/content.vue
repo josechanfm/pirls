@@ -13,6 +13,7 @@
                   <a @click="selectTopic(topic)">{{ topic.url }}</a><br/>
                   {{ topic.name }}<br/>
                   {{ topic.content }}
+                  {{ topic }}
                 </p>
               </div>
             </a-tab-pane>
