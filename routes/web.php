@@ -52,4 +52,6 @@ Route::get('mock', [App\Http\Controllers\MockController::class,'index'])->name('
 
 Route::get('mock/pirls', [App\Http\Controllers\Mock\PirlsController::class,'index'])->name('pirls.index');
 
-Route::get('pickleball', [App\Http\Controllers\PickleballController::class,'index'])->name('pickleball.index');
+Route::get('pickleball/score_board', [App\Http\Controllers\PickleballController::class,'scoreBoard'])->name('pickleball.scoreBoard');
+Route::get('pickleball/mcq', [App\Http\Controllers\PickleballController::class,'mcq'])->name('pickleball.mcq');
+Route::get('pickleball/generate_paper', [App\Http\Controllers\PickleballController::class,'generatePaper'])->name('pickleball.generatepaper');
