@@ -15,6 +15,18 @@
           <upload-outlined />
           <span>nav 3</span>
         </a-menu-item>
+        <a-menu-item key="4">
+          <upload-outlined />
+          <span>
+            <form @submit.prevent="logout">
+                <DropdownLink as="button">
+                    Log Out
+                </DropdownLink>
+            </form>
+
+          </span>
+        </a-menu-item>
+
       </a-menu>
     </a-layout-sider>
     <a-layout>
@@ -44,11 +56,19 @@
   </a-layout>
 </template>
 <script setup>
-import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons-vue';
+import { Head, Link, router } from '@inertiajs/vue3';
+
+import { MenuFoldOutlined, MenuUnfoldOutlined, UserOutlined, VideoCameraOutlined, UploadOutlined } from '@ant-design/icons-vue';
 
 import { ref } from 'vue';
+import DropdownLink from '@/Components/DropdownLink.vue';
+
 const selectedKeys = ref(['1']);
 const collapsed = ref(false);
+const logout = () => {
+    router.post(route('admin.logout'));
+};
+
 </script>
 <style>
 .trigger {

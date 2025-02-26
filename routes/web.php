@@ -14,6 +14,17 @@ use Inertia\Inertia;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::prefix('admin')->group(function () {
+    Route::get('login', [App\Http\Controllers\Admin\AuthController::class, 'showLoginForm'])->name('admin.login');
+    Route::post('login', [App\Http\Controllers\Admin\AuthController::class, 'login']);
+    Route::post('logout', [App\Http\Controllers\Admin\AuthController::class, 'logout'])->name('admin.logout');
+});
+Route::middleware([
+    'auth:admin',
+    'verified',
+])->prefix('admin')->group(function () {
+    Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin.dashboard');
+});
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -28,29 +39,26 @@ Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
-    })->name('dashboard');
+])->prefix('member')->group(function () {
+    Route::get('/', [App\Http\Controllers\Member\DashboardController::class,'index'])->name('member.dashboard');    
+    Route::get('mock', [App\Http\Controllers\Member\MockController::class,'index'])->name('member.mock.index');
+    Route::get('mock/pirls', [App\Http\Controllers\Member\Mock\PirlsController::class,'index'])->name('member.pirls.index');
+
 });
 
 
-Route::group([
-    'prefix' => '/admin',
-    'middleware' => [
-        'auth:sanctum',
-        config('jetstream.auth_session'),
-        'verified',
-        'role:admin'
-    ]
-], function () {
-    Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class,'index'])->name('admin.dashboard');
-    Route::resource('configs', App\Http\Controllers\Admin\ConfigController::class)->names('admin.configs');
-});
-
-Route::get('mock', [App\Http\Controllers\MockController::class,'index'])->name('mock.index');
-
-Route::get('mock/pirls', [App\Http\Controllers\Mock\PirlsController::class,'index'])->name('pirls.index');
+// Route::group([
+//     'prefix' => '/admin',
+//     'middleware' => [
+//         'auth:sanctum',
+//         config('jetstream.auth_session'),
+//         'verified',
+//         'role:admin'
+//     ]
+// ], function () {
+//     Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class,'index'])->name('admin.dashboard');
+//     Route::resource('configs', App\Http\Controllers\Admin\ConfigController::class)->names('admin.configs');
+// });
 
 Route::get('pickleball/score_board', [App\Http\Controllers\PickleballController::class,'scoreBoard'])->name('pickleball.scoreBoard');
 Route::get('pickleball/mcq', [App\Http\Controllers\PickleballController::class,'mcq'])->name('pickleball.mcq');

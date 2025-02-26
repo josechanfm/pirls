@@ -21,7 +21,7 @@ import ApplicationLogo from '@/Components/ApplicationLogo.vue';
         <div class="flex flex-col items-center min-h-screen bg-gray-100 p-5">
             <h1 class="text-4xl font-bold mb-8">Mock Exam Platform</h1>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <a href="/mock/pirls"
+                <a href="/member/mock/pirls"
                     class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex items-center">
                     <svg class="w-8 h-8 mr-3 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 24 24" stroke="currentColor">

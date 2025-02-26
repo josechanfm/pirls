@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Mock;
+namespace App\Http\Controllers\Member\Mock;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -19,7 +19,7 @@ class PirlsController extends Controller
         $leads=Topic::find(1)->leads;
         $domain=Domain::where('area','LOCAL_CULTURE')->with('topics')->first();
         // dd($domain, $topic->question_count, $leads);
-        return Inertia::render('Mock/Pirls/index',[
+        return Inertia::render('Member/Mock/Pirls/index',[
             'domain'=>$domain      
         ]);
     }

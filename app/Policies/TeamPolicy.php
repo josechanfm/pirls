@@ -4,6 +4,8 @@ namespace App\Policies;
 
 use App\Models\Team;
 use App\Models\User;
+use App\Models\Admin;
+
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class TeamPolicy
@@ -31,7 +33,10 @@ class TeamPolicy
      */
     public function create(User $user): bool
     {
-        return true;
+        // Allow both User and AdminUser to create teams
+        return $user instanceof User || $user instanceof Admin;
+
+        //return true;
     }
 
     /**
@@ -39,6 +44,9 @@ class TeamPolicy
      */
     public function update(User $user, Team $team): bool
     {
+        // Allow both User and AdminUser to update teams
+        $user instanceof User || $user instanceof Admin;
+
         return $user->ownsTeam($team);
     }
 
@@ -71,6 +79,8 @@ class TeamPolicy
      */
     public function delete(User $user, Team $team): bool
     {
+        return $user instanceof User || $user instanceof Admin;
+
         return $user->ownsTeam($team);
     }
 }
